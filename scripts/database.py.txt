@@ -1,0 +1,114 @@
+import sqlite3
+from datetime import datetime
+
+def init_db():
+    conn = sqlite3.connect('disease_detection.db')
+    cursor = conn.cursor()
+    
+    # Create table for storing detection results
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS detections (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        image_path TEXT,
+        detected_diseases TEXT,
+        latitude REAL,
+        longitude REAL,
+        location_name TEXT,
+        timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+        user_ip TEXT
+    )
+    ''')
+    
+    # Create table for storing chat interactions
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS chat_logs (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        detection_id INTEGER,
+        user_message TEXT,
+        bot_response TEXT,
+        timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (detection_id) REFERENCES detections (id)
+    )
+    ''')
+    
+    conn.commit()
+    conn.close()
+
+def save_detection(image_path, detected_diseases, latitude=None, longitude=None, location_name=None, user_ip=None):
+    conn = sqlite3.connect('disease_detection.db')
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+    INSERT INTO detections (image_path, detected_diseases, latitude, longitude, location_name, user_ip)
+    VALUES (?, ?, ?, ?, ?, ?)
+    ''', (image_path, detected_diseases, latitude, longitude, location_name, user_ip))
+    
+    detection_id = cursor.lastrowid
+    conn.commit()
+    conn.close()
+    
+    return detection_id
+
+def save_chat_log(detection_id, user_message, bot_response):
+    conn = sqlite3.connect('disease_detection.db')
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+    INSERT INTO chat_logs (detection_id, user_message, bot_response)
+    VALUES (?, ?, ?)
+    ''', (detection_id, user_message, bot_response))
+    
+    conn.commit()
+    conn.close()
+
+def get_disease_statistics():
+    conn = sqlite3.connect('disease_detection.db')
+    cursor = conn.cursor()
+    
+    # Get count of each disease
+    cursor.execute('''
+    SELECT detected_diseases, COUNT(*) as count
+    FROM detections
+    GROUP BY detected_diseases
+    ORDER BY count DESC
+    ''')
+    
+    disease_counts = cursor.fetchall()
+    
+    # Get geographical distribution
+    cursor.execute('''
+    SELECT location_name, latitude, longitude, detected_diseases, COUNT(*) as count
+    FROM detections
+    WHERE latitude IS NOT NULL AND longitude IS NOT NULL
+    GROUP BY location_name, detected_diseases
+    ORDER BY count DESC
+    ''')
+    
+    geo_distribution = cursor.fetchall()
+    
+    conn.close()
+    
+    return {
+        'disease_counts': disease_counts,
+        'geo_distribution': geo_distribution
+    }
+
+def get_recent_detections(limit=10):
+    conn = sqlite3.connect('disease_detection.db')
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+    SELECT id, detected_diseases, location_name, timestamp
+    FROM detections
+    ORDER BY timestamp DESC
+    LIMIT ?
+    ''', (limit,))
+    
+    recent_detections = cursor.fetchall()
+    conn.close()
+    
+    return recent_detections
+
+if __name__ == '__main__':
+    init_db()
+    print("Database initialized successfully!")
