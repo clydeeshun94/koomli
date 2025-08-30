@@ -10,7 +10,7 @@ from datetime import datetime
 
 # Import our modules
 from scripts.inference import inference, get_disease_info
-from scripts.chat import chatbot, class_info_dict
+from scripts.chat import chatbot, class_info_dict, openrouter_client
 from scripts.database import db  # ✅ Supabase only
 from scripts.location_service import get_user_ip, get_location_from_ip, validate_coordinates
 from scripts.analytics import export_analytics_data, get_disease_heatmap_data, get_top_diseases_by_location
@@ -220,6 +220,7 @@ if __name__ == '__main__':
 
     print("Starting Plant Disease Detection API with Supabase...")
     print("Make sure 'assets/best.pt' model file exists")
+    print("OpenRouter API configured for expert chat")
     print("Available endpoints:")
     print("  POST /upload - Upload image for disease detection")
     print("  POST /chat - Chat with the farming expert")
