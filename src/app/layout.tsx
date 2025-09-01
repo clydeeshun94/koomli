@@ -14,21 +14,21 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Z.ai Code Scaffold - AI-Powered Development",
-  description: "Modern Next.js scaffold optimized for AI-powered development with Z.ai. Built with TypeScript, Tailwind CSS, and shadcn/ui.",
-  keywords: ["Z.ai", "Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "AI development", "React"],
-  authors: [{ name: "Z.ai Team" }],
+  title: "Koomli Disease Detection AI - Plant Disease Analysis",
+  description: "AI-powered plant disease detection system. Upload plant images to identify diseases and get expert agricultural advice.",
+  keywords: ["plant disease", "AI detection", "agriculture", "farming", "disease analysis", "plant health"],
+  authors: [{ name: "Clyde at BigInt" }],
   openGraph: {
-    title: "Z.ai Code Scaffold",
-    description: "AI-powered development with modern React stack",
-    url: "https://chat.z.ai",
-    siteName: "Z.ai",
+    title: "Koomli Disease Detection AI",
+    description: "AI-powered plant disease detection and agricultural advice",
+    url: "https://bigint.onrender.com/about#portfolio",
+    siteName: "Koomli",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Z.ai Code Scaffold",
-    description: "AI-powered development with modern React stack",
+    title: "Koomli Disease Detection AI",
+    description: "AI-powered plant disease detection and agricultural advice",
   },
 };
 

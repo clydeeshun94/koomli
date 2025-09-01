@@ -224,7 +224,7 @@ export default function Home() {
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-green-800 mb-2 flex items-center justify-center gap-2">
             <Leaf className="w-8 h-8" />
-            Plant Disease Detection AI
+            Koomli Disease Detection AI
           </h1>
           <p className="text-gray-600">Upload or capture plant images to detect diseases and get expert advice</p>
         </div>
@@ -426,6 +426,23 @@ export default function Home() {
             <AnalyticsDashboard />
           </TabsContent>
         </Tabs>
+
+        {/* Footer */}
+        <footer className="mt-16 py-8 border-t border-gray-200">
+          <div className="text-center">
+            <p className="text-gray-600 text-sm">
+              Developed with ⚡ by{' '}
+              <a 
+                href="https://bigint.onrender.com/about#portfolio" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-green-600 hover:text-green-700 font-medium transition-colors"
+              >
+                Clyde at BigInt
+              </a>
+            </p>
+          </div>
+        </footer>
       </div>
     </div>
   )

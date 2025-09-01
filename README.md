@@ -1,4 +1,4 @@
-# Plant Disease Detection AI System
+# Koomli Disease Detection AI System
 
 A comprehensive AI-powered system for detecting plant diseases from images, providing expert advice, and tracking disease distribution geographically with a focus on Ghana.
 
