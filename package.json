@@ -7,7 +7,7 @@
     "dev:backend": "python app.py",
     "dev:full": "concurrently \"npm run dev\" \"npm run dev:backend\"",
     "build": "next build",
-    "start": "concurrently \"HOST=0.0.0.0 PORT=$PORT NODE_ENV=production tsx server.ts\" \"python app.py\"",
+    "start": "./start.sh",
     "lint": "next lint",
     "db:push": "prisma db push",
     "db:generate": "prisma generate",
@@ -87,7 +87,6 @@
     "vaul": "^1.1.2",
     "z-ai-web-dev-sdk": "^0.0.10",
     "zod": "^4.0.2",
-    "concurrently": "^8.2.2",
     "zustand": "^5.0.6"
   },
   "devDependencies": {
