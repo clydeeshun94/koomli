@@ -5,8 +5,8 @@ import { Server } from 'socket.io';
 import next from 'next';
 
 const dev = process.env.NODE_ENV !== 'production';
-const currentPort = 3000;
-const hostname = '0.0.0.0';
+const currentPort = parseInt(process.env.PORT) || 3000; // Use Render's PORT
+const hostname = process.env.HOST || '0.0.0.0'; // Use Render's HOST
 
 // Custom server with Socket.IO integration
 async function createCustomServer() {
