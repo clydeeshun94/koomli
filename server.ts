@@ -46,6 +46,7 @@ async function createCustomServer() {
     server.listen(currentPort, hostname, () => {
       console.log(`> Ready on http://${hostname}:${currentPort}`);
       console.log(`> Socket.IO server running at ws://${hostname}:${currentPort}/api/socketio`);
+      console.log(`> Flask API running at http://${hostname}:5000`);
     });
 
   } catch (err) {
