@@ -218,7 +218,11 @@ if __name__ == '__main__':
     if not os.path.exists('assets'):
         os.makedirs('assets')
 
+    # Get port from environment variable or default to 5000
+    port = int(os.environ.get('PORT', 5000))
+    
     print("Starting Plant Disease Detection API with Supabase...")
+    print(f"Running on port {port}")
     print("Make sure 'assets/best.pt' model file exists")
     print("OpenRouter API configured for expert chat")
     print("Available endpoints:")
@@ -230,4 +234,4 @@ if __name__ == '__main__':
     print("  GET /recent-detections - Get recent detections")
     print("  GET /health - Health check")
 
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=False, host='0.0.0.0', port=port)  # Set debug=False for production
