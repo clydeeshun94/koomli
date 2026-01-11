@@ -45,7 +45,7 @@ class OpenRouterChat:
 
 
 # Use the provided OpenRouter API key
-OPENROUTER_API_KEY = "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"
+OPENROUTER_API_KEY = "xxx"
 openrouter_client = OpenRouterChat(OPENROUTER_API_KEY)
 
 
