@@ -433,7 +433,7 @@ export default function Home() {
             <p className="text-gray-600 text-sm">
               Developed with ⚡ by{' '}
               <a 
-                href="https://bigint.onrender.com/about#portfolio" 
+                href="https://thebigint.netlify.app/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-green-600 hover:text-green-700 font-medium transition-colors"
