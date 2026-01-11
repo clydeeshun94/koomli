@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Koomli Disease Detection AI",
     description: "AI-powered plant disease detection and agricultural advice",
-    url: "https://bigint.onrender.com/about#portfolio",
+    url: "https://thebigint.netlify.app/",
     siteName: "Koomli",
     type: "website",
   },
